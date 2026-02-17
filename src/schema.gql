@@ -2,8 +2,9 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""Coffee model"""
 type Coffee {
-  id: Float!
+  id: ID!
   name: String!
   brand: String!
   flavors: [String!]!
@@ -11,4 +12,5 @@ type Coffee {
 
 type Query {
   coffees: [Coffee!]!
+  coffee(id: ID!): Coffee
 }
