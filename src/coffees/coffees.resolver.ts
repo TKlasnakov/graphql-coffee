@@ -13,12 +13,12 @@ export class CoffeesResolver {
     return this.coffeeService.findAll();
   }
 
-  @Query(() => Coffee, { name: 'coffee', nullable: true })
+  @Query(() => Coffee, { name: 'coffee' })
   findOne(@Args('id', { type: () => ID }, ParseIntPipe) id: number) {
     return this.coffeeService.findOne(id);
   }
 
-  @Mutation(() => Coffee, { name: 'createCoffee', nullable: true })
+  @Mutation(() => Coffee, { name: 'createCoffee' })
   create(@Args('createCoffeeInput') createCoffeeInput: CreateCoffeeInput) {
     return this.coffeeService.create(createCoffeeInput);
   }
