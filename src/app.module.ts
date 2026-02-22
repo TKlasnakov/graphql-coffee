@@ -7,6 +7,7 @@ import { join } from 'path';
 import { CoffeesModule } from './coffees/coffees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ScalarsDateScalar } from './common/scalars.date.scalar/scalars.date.scalar';
+import { PubSubModule } from './pub-sub/pub-sub.module';
 
 @Module({
   imports: [
@@ -23,8 +24,10 @@ import { ScalarsDateScalar } from './common/scalars.date.scalar/scalars.date.sca
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      installSubscriptionHandlers: true,
     }),
     CoffeesModule,
+    PubSubModule,
   ],
   controllers: [AppController],
   providers: [AppService, ScalarsDateScalar],
